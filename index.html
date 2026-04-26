@@ -5,14 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Γορτυνία — Ιστορία & Πολιτισμός</title>
   <meta name="description" content="Η ιστορία, οι απογραφές, τα τοπωνύμια και ο πολιτισμός της Γορτυνίας της Αρκαδίας.">
-
-  <!-- Fonts -->
+  <meta property="og:title" content="Γορτυνία — Ιστορία & Πολιτισμός">
+  <meta property="og:description" content="Στα βουνά της κεντρικής Πελοποννήσου, η Γορτυνία κρατά ζωντανή μια ιστορία χιλιετιών.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="el_GR">
+  <meta property="og:url" content="https://michelis2023.github.io/gortynias-historia/">
+  <meta property="og:site_name" content="Γορτυνία — Ιστορία & Πολιτισμός">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Γορτυνία — Ιστορία & Πολιτισμός">
+  <meta name="twitter:description" content="Ιστορία, απογραφές Pouqueville, τοπωνύμια και πολιτισμός της Γορτυνίας Αρκαδίας.">
+  <meta name="author" content="Μιχαήλ Σ. Μιχαλακόπουλος">
+  <meta name="keywords" content="Γορτυνία, Αρκαδία, Πελοπόννησος, Καρύταινα, Δημητσάνα, Βυτίνα, Στεμνίτσα, Λαγκάδια, ιστορία, Pouqueville">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><path d='M4 32 L12 14 L20 22 L28 8 L36 32 Z' stroke='%237a3a1a' stroke-width='1.5' stroke-linejoin='round' fill='none'/><path d='M4 32 L36 32' stroke='%237a3a1a' stroke-width='1.5'/><circle cx='28' cy='8' r='2.5' fill='%237a3a1a' opacity='0.6'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== DESIGN TOKENS ===== */
     :root, [data-theme="light"] {
       --color-bg:             #f5f0e8;
       --color-surface:        #f9f5ed;
@@ -53,7 +62,6 @@
       --content-wide: 1200px;
       --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     [data-theme="dark"] {
       --color-bg:             #1a1208;
       --color-surface:        #211808;
@@ -74,10 +82,7 @@
       --shadow-md: 0 4px 16px oklch(0 0 0 / 0.4);
       --shadow-lg: 0 12px 40px oklch(0 0 0 / 0.5);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ===== ΚΡΙΣΙΜΗ ΔΙΟΡΘΩΣΗ: αποτροπή οριζόντιου scroll ===== */
     html {
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -96,7 +101,6 @@
       overflow-x: hidden;
       width: 100%;
     }
-
     img, picture { display: block; max-width: 100%; height: auto; }
     ul[role="list"] { list-style: none; }
     input, button { font: inherit; color: inherit; }
@@ -107,15 +111,20 @@
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
     button { cursor: pointer; background: none; border: none; }
     a, button { transition: color var(--transition-interactive), background var(--transition-interactive), opacity var(--transition-interactive); }
-
     .container { max-width: var(--content-default); margin-inline: auto; padding-inline: var(--space-6); width: 100%; }
     .container--wide { max-width: var(--content-wide); }
     .container--narrow { max-width: var(--content-narrow); }
-
     .skip-link { position: absolute; top: -100%; left: var(--space-4); background: var(--color-primary); color: var(--color-text-inverse); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); font-family: var(--font-ui); font-size: var(--text-sm); z-index: 1000; text-decoration: none; }
     .skip-link:focus { top: var(--space-4); }
 
-    /* ===== HEADER ===== */
+    /* PROGRESS BAR */
+    #reading-progress {
+      position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+      background: linear-gradient(to right, var(--color-primary), var(--color-gold));
+      z-index: 9999; transition: width 0.1s linear;
+    }
+
+    /* HEADER */
     .site-header { position: sticky; top: 0; z-index: 100; background: color-mix(in oklch, var(--color-bg) 90%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-divider); padding-block: var(--space-4); width: 100%; }
     .header-inner { max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: nowrap; }
     .site-logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--color-text); flex-shrink: 0; }
@@ -124,12 +133,12 @@
     .logo-subtitle { font-family: var(--font-ui); font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
     nav { display: flex; align-items: center; gap: var(--space-4); flex-shrink: 0; }
     .nav-links { display: flex; align-items: center; gap: var(--space-4); list-style: none; flex-wrap: nowrap; }
-    .nav-links a { font-family: var(--font-ui); font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; padding-block: var(--space-1); white-space: nowrap; }
-    .nav-links a:hover { color: var(--color-primary); }
+    .nav-links a { font-family: var(--font-ui); font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; padding-block: var(--space-1); white-space: nowrap; border-bottom: 2px solid transparent; transition: color var(--transition-interactive), border-color var(--transition-interactive); }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
     .theme-toggle { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 9999px; color: var(--color-text-muted); border: 1px solid var(--color-border); background: var(--color-surface); flex-shrink: 0; }
     .theme-toggle:hover { color: var(--color-primary); border-color: var(--color-primary); }
 
-    /* ===== HAMBURGER (mobile) ===== */
+    /* HAMBURGER */
     .hamburger { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text-muted); flex-shrink: 0; }
     .hamburger:hover { color: var(--color-primary); border-color: var(--color-primary); }
     .mobile-nav { display: none; position: fixed; inset: 0; top: 65px; background: color-mix(in oklch, var(--color-bg) 97%, transparent); backdrop-filter: blur(16px); z-index: 99; padding: var(--space-6); border-top: 1px solid var(--color-divider); }
@@ -138,7 +147,20 @@
     .mobile-nav a { display: block; font-family: var(--font-ui); font-size: var(--text-lg); color: var(--color-text-muted); text-decoration: none; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); }
     .mobile-nav a:hover { color: var(--color-primary); background: var(--color-primary-highlight); }
 
-    /* ===== TOC ===== */
+    /* BACK TO TOP */
+    #back-to-top {
+      position: fixed; bottom: var(--space-8); right: var(--space-6);
+      width: 44px; height: 44px; border-radius: 9999px;
+      background: var(--color-primary); color: var(--color-text-inverse);
+      border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-md); opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s, background var(--transition-interactive);
+      z-index: 200; pointer-events: none;
+    }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #back-to-top:hover { background: var(--color-primary-hover); }
+
+    /* TOC */
     .toc { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-5) var(--space-6); margin-bottom: var(--space-10); display: inline-block; min-width: 260px; max-width: 100%; }
     .toc-title { font-family: var(--font-ui); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); margin-bottom: var(--space-3); }
     .toc ul { list-style: none; padding: 0; margin: 0; }
@@ -147,7 +169,18 @@
     .toc a::before { content: '›'; opacity: 0.6; }
     .toc a:hover { text-decoration: underline; }
 
-    /* ===== HERO ===== */
+    /* CALLOUT */
+    .callout {
+      display: flex; gap: var(--space-4); align-items: flex-start;
+      background: var(--color-gold-highlight);
+      border: 1px solid color-mix(in oklch, var(--color-gold) 40%, var(--color-border));
+      border-radius: var(--radius-xl); padding: var(--space-5) var(--space-6); margin-block: var(--space-8);
+    }
+    .callout-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1.4; }
+    .callout-label { font-family: var(--font-ui); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-gold); font-weight: 600; margin-bottom: var(--space-1); }
+    .callout p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; margin: 0; max-width: unset; }
+
+    /* HERO */
     .hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; background: linear-gradient(in oklch, var(--color-bg) 0%, color-mix(in oklch, var(--color-primary) 8%, var(--color-bg)) 100%); width: 100%; }
     .hero-bg-pattern { position: absolute; inset: 0; pointer-events: none; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--color-primary) 0px, var(--color-primary) 1px, transparent 1px, transparent 40px); }
     .hero-content { position: relative; z-index: 1; max-width: var(--content-wide); width: 100%; margin-inline: auto; padding: var(--space-24) var(--space-6); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; }
@@ -165,8 +198,6 @@
     .hero-stat { text-align: center; }
     .hero-stat-value { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-primary); font-style: italic; }
     .hero-stat-label { font-family: var(--font-ui); font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
-
-    /* ===== MOBILE HERO STATS ===== */
     .hero-stats-mobile { display: none; grid-template-columns: repeat(3,1fr); gap: var(--space-4); margin-top: var(--space-8); padding: var(--space-5); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); }
     .hero-stats-mobile .hero-stat-value { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-primary); font-style: italic; }
     .hero-stats-mobile .hero-stat-label { font-family: var(--font-ui); font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
@@ -204,8 +235,8 @@
 
     .pouqueville-section { background:color-mix(in oklch,var(--color-primary) 5%,var(--color-bg)); border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); }
     .pouqueville-grid { display:grid; grid-template-columns:2fr 1fr; gap:var(--space-12); align-items:start; }
-    .pouqueville-table-wrapper { overflow-x:auto; border-radius:var(--radius-lg); border:1px solid var(--color-border); -webkit-overflow-scrolling: touch; }
-    .pouqueville-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); min-width: 360px; }
+    .pouqueville-table-wrapper { overflow-x:auto; border-radius:var(--radius-lg); border:1px solid var(--color-border); -webkit-overflow-scrolling:touch; }
+    .pouqueville-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); min-width:360px; }
     .pouqueville-table thead { background:var(--color-surface-offset); }
     .pouqueville-table th { padding:var(--space-3) var(--space-4); text-align:left; font-family:var(--font-ui); font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.12em; color:var(--color-text-muted); border-bottom:1px solid var(--color-divider); }
     .pouqueville-table td { padding:var(--space-3) var(--space-4); font-size:var(--text-sm); color:var(--color-text); border-bottom:1px solid var(--color-divider); }
@@ -229,16 +260,34 @@
     .full-bleed-quote blockquote p { font-family:var(--font-display); font-style:italic; font-size:var(--text-xl); line-height:1.5; max-width:unset; opacity:0.95; }
     .full-bleed-quote blockquote cite { display:block; margin-top:var(--space-4); font-family:var(--font-ui); font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.2em; opacity:0.65; font-style:normal; }
 
-    /* ===== DIALECT GRID ===== */
     .dialect-card { background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:var(--space-8); box-shadow:var(--shadow-sm); }
     .dialect-example { background:var(--color-gold-highlight); border:1px solid color-mix(in oklch,var(--color-gold) 30%,var(--color-border)); border-radius:var(--radius-lg); padding:var(--space-5); margin-block:var(--space-4); font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); color:var(--color-text); }
     .dialect-example span { display:block; font-family:var(--font-ui); font-style:normal; font-size:var(--text-sm); color:var(--color-text-muted); margin-top:var(--space-2); }
     .dialect-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8); align-items:start; }
     .dialect-stack { display:flex; flex-direction:column; gap:var(--space-5); }
 
+    /* ΣΗΜΕΡΑ */
+    .today-section { background:color-mix(in oklch, var(--color-gold) 6%, var(--color-bg)); border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); }
+    .today-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr)); gap:var(--space-5); }
+    .today-card { background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:var(--space-6); text-align:center; box-shadow:var(--shadow-sm); }
+    .today-card-value { font-family:var(--font-display); font-size:var(--text-2xl); color:var(--color-primary); font-style:italic; display:block; }
+    .today-card-label { font-family:var(--font-ui); font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.12em; color:var(--color-text-muted); margin-top:var(--space-2); display:block; }
+    .today-card-note { font-size:var(--text-xs); color:var(--color-text-faint); margin-top:var(--space-2); display:block; }
+
+    /* ΒΙΒΛΙΟΓΡΑΦΙΑ */
+    .biblio-section { background:var(--color-surface); border-top:1px solid var(--color-divider); }
+    .biblio-list { list-style:none; display:flex; flex-direction:column; gap:var(--space-4); }
+    .biblio-item { display:flex; gap:var(--space-4); align-items:flex-start; padding:var(--space-4) var(--space-5); background:var(--color-bg); border:1px solid var(--color-border); border-radius:var(--radius-lg); }
+    .biblio-num { font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); color:var(--color-primary); flex-shrink:0; min-width:1.5rem; }
+    .biblio-text { font-size:var(--text-sm); color:var(--color-text-muted); line-height:1.7; }
+    .biblio-text strong { color:var(--color-text); }
+    .biblio-text em { color:var(--color-primary); }
+
+    /* FOOTER */
     footer { background:var(--color-surface); border-top:1px solid var(--color-divider); padding-block:var(--space-12); }
     .footer-inner { max-width:var(--content-wide); margin-inline:auto; padding-inline:var(--space-6); display:grid; grid-template-columns:2fr 1fr 1fr; gap:var(--space-12); }
     .footer-brand p { margin-top:var(--space-4); font-size:var(--text-sm); color:var(--color-text-muted); max-width:40ch; }
+    .footer-updated { font-family:var(--font-ui); font-size:var(--text-xs); color:var(--color-text-faint); margin-top:var(--space-3); }
     .footer-col h4 { font-family:var(--font-ui); font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.15em; color:var(--color-text-muted); margin-bottom:var(--space-4); }
     .footer-links { list-style:none; }
     .footer-links li { margin-bottom:var(--space-3); }
@@ -249,44 +298,50 @@
     .footer-bottom a { color:var(--color-text-muted); }
     .footer-bottom a:hover { color:var(--color-primary); }
 
-    /* ===== RESPONSIVE — LAPTOP / ΜΕΣΑΙΑ ΟΘΟΝΗ (1024px) ===== */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .hero-content { grid-template-columns: 1fr 1fr; gap: var(--space-8); padding: var(--space-16) var(--space-6); }
-      .history-grid { gap: var(--space-8); }
-      .pouqueville-grid { gap: var(--space-8); }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
-      .nav-links { gap: var(--space-3); }
-      .nav-links a { font-size: 0.8rem; }
+      .hero-content { grid-template-columns:1fr 1fr; gap:var(--space-8); padding:var(--space-16) var(--space-6); }
+      .history-grid { gap:var(--space-8); }
+      .pouqueville-grid { gap:var(--space-8); }
+      .footer-inner { grid-template-columns:1fr 1fr; gap:var(--space-8); }
+      .nav-links { gap:var(--space-3); }
+      .nav-links a { font-size:0.8rem; }
     }
-
-    /* ===== RESPONSIVE — TABLET (900px): κρύβει τον χάρτη, μεταβαίνει σε 1 στήλη ===== */
     @media (max-width: 900px) {
-      .hero-content { grid-template-columns: 1fr; padding-block: var(--space-12); }
-      .hero-map-card { display: none; }
-      .hero-stats-mobile { display: grid; }
-      .history-grid { grid-template-columns: 1fr; }
-      .pouqueville-grid { grid-template-columns: 1fr; }
-      .dialect-grid { grid-template-columns: 1fr; }
-      .toc { display: block; min-width: unset; width: 100%; }
-      .source-card { position: static; }
+      .hero-content { grid-template-columns:1fr; padding-block:var(--space-12); }
+      .hero-map-card { display:none; }
+      .hero-stats-mobile { display:grid; }
+      .history-grid { grid-template-columns:1fr; }
+      .pouqueville-grid { grid-template-columns:1fr; }
+      .dialect-grid { grid-template-columns:1fr; }
+      .toc { display:block; min-width:unset; width:100%; }
+      .source-card { position:static; }
     }
-
-    /* ===== RESPONSIVE — MOBILE (768px) ===== */
     @media (max-width: 768px) {
-      .footer-inner { grid-template-columns: 1fr; gap: var(--space-8); }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .pull-quote { padding: var(--space-4) var(--space-5); }
+      .footer-inner { grid-template-columns:1fr; gap:var(--space-8); }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .footer-bottom { flex-direction:column; text-align:center; }
+      .pull-quote { padding:var(--space-4) var(--space-5); }
+      #back-to-top { bottom:var(--space-6); right:var(--space-4); }
     }
-
-    /* ===== RESPONSIVE — ΜΙΚΡΟ MOBILE (480px) ===== */
     @media (max-width: 480px) {
-      .container, .header-inner { padding-inline: var(--space-4); }
-      .toc { display: block; min-width: unset; }
-      .hero-stats-mobile { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); padding: var(--space-4); }
-      .dialect-card { padding: var(--space-5); }
-      .village-card { padding: var(--space-4); }
+      .container, .header-inner { padding-inline:var(--space-4); }
+      .toc { display:block; min-width:unset; }
+      .hero-stats-mobile { grid-template-columns:repeat(3,1fr); gap:var(--space-2); padding:var(--space-4); }
+      .dialect-card { padding:var(--space-5); }
+      .village-card { padding:var(--space-4); }
+      .callout { flex-direction:column; gap:var(--space-2); }
+    }
+    @media print {
+      .site-header,.mobile-nav,#back-to-top,#reading-progress,.hamburger,.theme-toggle { display:none !important; }
+      body { background:#fff; color:#000; font-size:11pt; }
+      .hero { min-height:auto; padding-block:1cm; }
+      .hero-map-card { display:none; }
+      a { color:inherit; text-decoration:none; }
+      .village-card,.toponym-item,.dialect-card,.biblio-item { break-inside:avoid; }
+      .history-grid,.pouqueville-grid,.dialect-grid { grid-template-columns:1fr; }
+      .footer-inner { grid-template-columns:1fr; }
     }
 
     @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -295,6 +350,8 @@
   </style>
 </head>
 <body>
+
+  <div id="reading-progress" role="progressbar" aria-label="Πρόοδος ανάγνωσης"></div>
   <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
 
   <header class="site-header" role="banner">
@@ -317,6 +374,8 @@
           <li><a href="#apografi">Απογραφή Pouqueville</a></li>
           <li><a href="#toponymia">Τοπωνύμια</a></li>
           <li><a href="#dialektos">Διάλεκτος</a></li>
+          <li><a href="#simera">Σήμερα</a></li>
+          <li><a href="#vivliografia">Πηγές</a></li>
         </ul>
         <button class="theme-toggle" data-theme-toggle aria-label="Εναλλαγή θέματος">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -328,7 +387,6 @@
     </div>
   </header>
 
-  <!-- Mobile navigation overlay -->
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Μενού πλοήγησης">
     <ul>
       <li><a href="#historia" class="mobile-nav-link">📜 Ιστορία</a></li>
@@ -336,10 +394,18 @@
       <li><a href="#apografi" class="mobile-nav-link">📊 Απογραφή Pouqueville</a></li>
       <li><a href="#toponymia" class="mobile-nav-link">🗺️ Τοπωνύμια</a></li>
       <li><a href="#dialektos" class="mobile-nav-link">💬 Διάλεκτος</a></li>
+      <li><a href="#simera" class="mobile-nav-link">📍 Σήμερα</a></li>
+      <li><a href="#vivliografia" class="mobile-nav-link">📚 Πηγές</a></li>
     </ul>
   </div>
 
+  <button id="back-to-top" aria-label="Επιστροφή στην κορυφή">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
   <main id="main">
+
+    <!-- ===== HERO ===== -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-bg-pattern" aria-hidden="true"></div>
       <div class="hero-content">
@@ -348,8 +414,9 @@
           <h1 class="hero-title" id="hero-heading">Γορτυνία</h1>
           <p class="hero-subtitle">Η καρδιά της Αρκαδίας</p>
           <p class="hero-desc">Στα βουνά της κεντρικής Πελοποννήσου, η Γορτυνία κρατά ζωντανή μια ιστορία χιλιετιών. Από τις αρχαίες πόλεις-κράτη ώς τους αγώνες της Ελληνικής Επανάστασης, αυτή η περιοχή αποτελεί έναν από τους πλουσιότερους τόπους ιστορικής μνήμης της Ελλάδας.</p>
-          <a href="#historia" class="hero-cta">Εξερευνήστε την ιστορία <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <!-- Stats εμφανίζονται εδώ μόνο σε mobile -->
+          <a href="#historia" class="hero-cta">Εξερευνήστε την ιστορία
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
           <div class="hero-stats-mobile" aria-label="Στατιστικά">
             <div class="hero-stat"><div class="hero-stat-value">~1.000</div><div class="hero-stat-label">τ.χλμ.</div></div>
             <div class="hero-stat"><div class="hero-stat-value">125+</div><div class="hero-stat-label">οικισμοί</div></div>
@@ -379,12 +446,12 @@
       </div>
     </section>
 
+    <!-- ===== ΙΣΤΟΡΙΑ ===== -->
     <section id="historia" class="history-section">
       <div class="container">
         <p class="section-label">Ιστορική αναδρομή</p>
         <h2 class="section-title">Από την αρχαιότητα ώς τους νεότερους χρόνους</h2>
 
-        <!-- Πίνακας περιεχομένων -->
         <nav class="toc" aria-label="Περιεχόμενα σελίδας">
           <p class="toc-title">Θεματικές ενότητες</p>
           <ul>
@@ -393,6 +460,8 @@
             <li><a href="#apografi">Απογραφή Pouqueville</a></li>
             <li><a href="#toponymia">Τοπωνύμια</a></li>
             <li><a href="#dialektos">Γορτυνιακό Ιδίωμα</a></li>
+            <li><a href="#simera">Γορτυνία Σήμερα</a></li>
+            <li><a href="#vivliografia">Βιβλιογραφία &amp; Πηγές</a></li>
           </ul>
         </nav>
 
@@ -400,24 +469,60 @@
           <div class="history-text">
             <p>Η Γορτυνία, το βορειοδυτικό τμήμα της Αρκαδίας, υπήρξε από την αρχαιότητα ένας τόπος σημαντικός — τόσο για τη γεωστρατηγική του θέση, όσο και για τον πλούτο των πολιτισμών που φιλοξένησε. Οι αρχαίες πόλεις της Γόρτυνος, της Ηραίας, της Θέλπουσας και της Κλείτορος άφησαν ίχνη βαθιά στο τοπίο και στη μνήμη της περιοχής.</p>
             <p>Κατά τη βυζαντινή περίοδο, η Καρύταινα (γνωστή τότε ως Λιοντάρι) αναδείχθηκε σε κέντρο φεουδαρχικής εξουσίας. Ο φράγκος βαρόνος Γοδεφρείδος Β΄ ντε Μπριγιέρ άφησε αρχιτεκτονικά μνημεία που στέκουν ακόμα και σήμερα.</p>
+
+            <div class="callout">
+              <span class="callout-icon">💡</span>
+              <div>
+                <p class="callout-label">Γνωρίζατε ότι…</p>
+                <p>Η Καρύταινα εικονιζόταν στο παλιό ελληνικό χαρτονόμισμα των 5.000 δραχμών, ως σύμβολο της ιστορικής μνήμης της Ελλάδας.</p>
+              </div>
+            </div>
+
             <div class="pull-quote">
               <p>«Η Γορτυνία είναι μια γη που ο χρόνος δεν τόλμησε να σβήσει — μόνο να χαράξει βαθύτερα.»</p>
               <cite>Παράδοση περιηγητών, 19ος αιώνας</cite>
             </div>
+
             <p>Κατά την περίοδο της Τουρκοκρατίας, η Γορτυνία αποτέλεσε κέντρο αντίστασης. Η περίφημη Δημητσάνα με τη σχολή της, τα μυστικά εργαστήρια μπαρούτης και τους λόγιους κληρικούς της, έγινε σύμβολο του αδούλωτου ελληνικού πνεύματος.</p>
           </div>
+
           <nav class="timeline" aria-label="Χρονολόγιο Γορτυνίας">
-            <div class="timeline-item"><p class="timeline-year">Αρχαιότητα</p><h3 class="timeline-event">Αρχαίες Πόλεις</h3><p class="timeline-desc">Γόρτυς, Ηραία, Θέλπουσα, Κλείτωρ — ισχυρές αρκαδικές πόλεις-κράτη.</p></div>
-            <div class="timeline-item"><p class="timeline-year">1209 μ.Χ.</p><h3 class="timeline-event">Φραγκοκρατία</h3><p class="timeline-desc">Το Λιοντάρι (Καρύταινα) γίνεται κέντρο φραγκικής βαρωνίας. Κτίζεται το κάστρο που δεσπόζει ακόμα.</p></div>
-            <div class="timeline-item"><p class="timeline-year">1461–1685</p><h3 class="timeline-event">Οθωμανική Περίοδος</h3><p class="timeline-desc">Η Γορτυνία γίνεται μέρος του Καζά Καρύταινας.</p></div>
-            <div class="timeline-item"><p class="timeline-year">1779</p><h3 class="timeline-event">Καταστροφή Ζάτουνας</h3><p class="timeline-desc">Μετά τα Ορλωφικά, σφοδρές οθωμανικές αντίποινες πλήττουν τα χωριά της Γορτυνίας.</p></div>
-            <div class="timeline-item"><p class="timeline-year">1821</p><h3 class="timeline-event">Ελληνική Επανάσταση</h3><p class="timeline-desc">Οι Γορτύνιοι αγωνίζονται στο πλευρό των Κολοκοτρωναίων. Βαλτέτσι, Δερβενάκια, Γράνα.</p></div>
-            <div class="timeline-item"><p class="timeline-year">1834</p><h3 class="timeline-event">Απελευθερωμένη Ελλάδα</h3><p class="timeline-desc">Η πρώτη επίσημη απογραφή καταγράφει τους δήμους και τον πληθυσμό της Γορτυνίας.</p></div>
+            <div class="timeline-item">
+              <p class="timeline-year">Αρχαιότητα</p>
+              <h3 class="timeline-event">Αρχαίες Πόλεις</h3>
+              <p class="timeline-desc">Γόρτυς, Ηραία, Θέλπουσα, Κλείτωρ — ισχυρές αρκαδικές πόλεις-κράτη.</p>
+            </div>
+            <div class="timeline-item">
+              <p class="timeline-year">1209 μ.Χ.</p>
+              <h3 class="timeline-event">Φραγκοκρατία</h3>
+              <p class="timeline-desc">Το Λιοντάρι (Καρύταινα) γίνεται κέντρο φραγκικής βαρωνίας. Κτίζεται το κάστρο που δεσπόζει ακόμα.</p>
+            </div>
+            <div class="timeline-item">
+              <p class="timeline-year">1461–1685</p>
+              <h3 class="timeline-event">Οθωμανική Περίοδος</h3>
+              <p class="timeline-desc">Η Γορτυνία γίνεται μέρος του Καζά Καρύταινας.</p>
+            </div>
+            <div class="timeline-item">
+              <p class="timeline-year">1779</p>
+              <h3 class="timeline-event">Καταστροφή Ζάτουνας</h3>
+              <p class="timeline-desc">Μετά τα Ορλωφικά, σφοδρές οθωμανικές αντίποινες πλήττουν τα χωριά της Γορτυνίας.</p>
+            </div>
+            <div class="timeline-item">
+              <p class="timeline-year">1821</p>
+              <h3 class="timeline-event">Ελληνική Επανάσταση</h3>
+              <p class="timeline-desc">Οι Γορτύνιοι αγωνίζονται στο πλευρό των Κολοκοτρωναίων. Βαλτέτσι, Δερβενάκια, Γράνα.</p>
+            </div>
+            <div class="timeline-item">
+              <p class="timeline-year">1834</p>
+              <h3 class="timeline-event">Απελευθερωμένη Ελλάδα</h3>
+              <p class="timeline-desc">Η πρώτη επίσημη απογραφή καταγράφει τους δήμους και τον πληθυσμό της Γορτυνίας.</p>
+            </div>
           </nav>
         </div>
       </div>
     </section>
 
+    <!-- ===== FULL BLEED QUOTE ===== -->
     <div class="full-bleed-quote" role="complementary">
       <blockquote>
         <p>«Η Αρκαδία ήτο η πατρίς της απλότητος, της αθωότητος και της φιλαρμονίας — εδώ η φύση και η ψυχή του ανθρώπου βρήκαν αρμονία.»</p>
@@ -425,16 +530,28 @@
       </blockquote>
     </div>
 
+    <!-- ===== ΑΠΟΓΡΑΦΗ POUQUEVILLE ===== -->
     <section id="apografi" class="pouqueville-section">
       <div class="container container--wide">
         <p class="section-label">Πηγή: Voyage de la Grèce</p>
         <h2 class="section-title">Απογραφή Pouqueville (~1806-1812)</h2>
         <p class="section-lead">Ο Γάλλος γιατρός François Pouqueville κατέγραψε με εκπληκτική λεπτομέρεια τα χωριά, τις οικογένειες και την καθημερινή ζωή της Γορτυνίας.</p>
+
+        <div class="callout" style="margin-bottom:var(--space-8);">
+          <span class="callout-icon">📊</span>
+          <div>
+            <p class="callout-label">Σημείωση για την απογραφή</p>
+            <p>Οι αριθμοί οικογενειών είναι εκτιμήσεις του Pouqueville κατά την περίοδο 1806-1812, πριν την Ελληνική Επανάσταση. Πολλά χωριά άλλαξαν δραματικά πληθυσμό μετά το 1821.</p>
+          </div>
+        </div>
+
         <div class="pouqueville-grid">
           <div>
             <div class="pouqueville-table-wrapper">
               <table class="pouqueville-table" aria-label="Απογραφή Pouqueville">
-                <thead><tr><th scope="col">Χωριό</th><th scope="col">Περιοχή</th><th scope="col">Οικογένειες</th></tr></thead>
+                <thead>
+                  <tr><th scope="col">Χωριό</th><th scope="col">Περιοχή</th><th scope="col">Οικογένειες</th></tr>
+                </thead>
                 <tbody>
                   <tr><td>Καρύταινα (Λιοντάρι)</td><td>Κεντρική Γορτυνία</td><td>~85</td></tr>
                   <tr><td>Δημητσάνα</td><td>Βόρεια Γορτυνία</td><td>~120</td></tr>
@@ -453,44 +570,108 @@
             <h3 class="source-card-title">Για τον Pouqueville</h3>
             <p><strong>François Pouqueville</strong> (1770-1838) ήταν Γάλλος φυσιοδίφης που κατέγραψε με επιστημονική ακρίβεια την προεπαναστατική Ελλάδα.</p>
             <p>Το έργο του <em>«Voyage de la Grèce»</em> (5 τόμοι, 1820-1821) είναι εξαιρετικά πολύτιμη πηγή για την Πελοπόννησο λίγα χρόνια πριν το 1821.</p>
-            <div><span class="source-tag">Ιστορική πηγή</span><span class="source-tag">Προεπαναστατικά</span><span class="source-tag">Απογραφή</span></div>
+            <div>
+              <span class="source-tag">Ιστορική πηγή</span>
+              <span class="source-tag">Προεπαναστατικά</span>
+              <span class="source-tag">Απογραφή</span>
+            </div>
           </aside>
         </div>
       </div>
     </section>
 
+    <!-- ===== ΧΩΡΙΑ ===== -->
     <section id="choria">
       <div class="container container--wide">
         <p class="section-label">Οικισμοί &amp; Χωριά</p>
         <h2 class="section-title">Τα χωριά της Γορτυνίας</h2>
         <p class="section-lead">Κάθε χωριό κρύβει τη δική του ιστορία, την αρχιτεκτονική της πέτρας και τη δική του σιωπή.</p>
         <div class="villages-grid">
-          <article class="village-card"><h3 class="village-name">Καρύταινα</h3><p class="village-region">Κεντρική Γορτυνία · Έδρα επαρχίας</p><p class="village-desc">Χτισμένη σε βράχο πάνω από τον Αλφειό με το μεσαιωνικό κάστρο που δεσπόζει. Ονομαζόταν «Λιοντάρι» στα χρόνια της Φραγκοκρατίας.</p><div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~85 οικογένειες</span></div></article>
-          <article class="village-card"><h3 class="village-name">Δημητσάνα</h3><p class="village-region">Βόρεια Γορτυνία · Πνευματικό κέντρο</p><p class="village-desc">Κέντρο παιδείας και αντίστασης. Φιλοξένησε κρυφά εργαστήρια μπαρούτης. Γεννέτειρα του Πατριάρχη Γρηγορίου Ε΄.</p><div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~120 οικογένειες</span></div></article>
-          <article class="village-card"><h3 class="village-name">Στεμνίτσα</h3><p class="village-region">Κεντρική Γορτυνία · Χρυσοχοΐα</p><p class="village-desc">Ονομαστή για τους αργυροχρυσοχόους της. Ένα από τα πιο καλοδιατηρημένα λιθόκτιστα χωριά της Αρκαδίας.</p><div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~70 οικογένειες</span></div></article>
-          <article class="village-card"><h3 class="village-name">Λαγκάδια</h3><p class="village-region">Βόρεια Γορτυνία · Μαστορική</p><p class="village-desc">Οι Λαγκαδινοί μαστόροι ταξίδευαν στα Βαλκάνια. Είχαν τη δική τους συνθηματική γλώσσα — τα «κουδαρίτικα».</p><div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~110 οικογένειες</span></div></article>
-          <article class="village-card"><h3 class="village-name">Βυτίνα</h3><p class="village-region">Βόρεια Γορτυνία · Ορεινό θέρετρο</p><p class="village-desc">Γνωστή για τα πυκνά ελατόδαση και το δροσερό κλίμα. Το υδρόμυλο και τα αρχοντικά της σώζονται ακόμα.</p><div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~95 οικογένειες</span></div></article>
-          <article class="village-card"><h3 class="village-name">Ηραία</h3><p class="village-region">Βόρεια Γορτυνία · Αρχαία πόλη</p><p class="village-desc">Κτισμένη πάνω στα ερείπια της αρχαίας Ηραίας, με θέα στον Αλφειό. Συνδεδεμένη με αρχαίες τελετές προς τιμήν της Ήρας.</p><div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~80 οικογένειες</span></div></article>
+          <article class="village-card">
+            <h3 class="village-name">Καρύταινα</h3>
+            <p class="village-region">Κεντρική Γορτυνία · Έδρα επαρχίας</p>
+            <p class="village-desc">Χτισμένη σε βράχο πάνω από τον Αλφειό με το μεσαιωνικό κάστρο που δεσπόζει. Ονομαζόταν «Λιοντάρι» στα χρόνια της Φραγκοκρατίας.</p>
+            <div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~85 οικογένειες</span></div>
+          </article>
+          <article class="village-card">
+            <h3 class="village-name">Δημητσάνα</h3>
+            <p class="village-region">Βόρεια Γορτυνία · Πνευματικό κέντρο</p>
+            <p class="village-desc">Κέντρο παιδείας και αντίστασης. Φιλοξένησε κρυφά εργαστήρια μπαρούτης. Γεννέτειρα του Πατριάρχη Γρηγορίου Ε΄.</p>
+            <div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~120 οικογένειες</span></div>
+          </article>
+          <article class="village-card">
+            <h3 class="village-name">Στεμνίτσα</h3>
+            <p class="village-region">Κεντρική Γορτυνία · Χρυσοχοΐα</p>
+            <p class="village-desc">Ονομαστή για τους αργυροχρυσοχόους της. Ένα από τα πιο καλοδιατηρημένα λιθόκτιστα χωριά της Αρκαδίας.</p>
+            <div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~70 οικογένειες</span></div>
+          </article>
+          <article class="village-card">
+            <h3 class="village-name">Λαγκάδια</h3>
+            <p class="village-region">Βόρεια Γορτυνία · Μαστορική</p>
+            <p class="village-desc">Οι Λαγκαδινοί μαστόροι ταξίδευαν στα Βαλκάνια. Είχαν τη δική τους συνθηματική γλώσσα — τα «κουδαρίτικα».</p>
+            <div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~110 οικογένειες</span></div>
+          </article>
+          <article class="village-card">
+            <h3 class="village-name">Βυτίνα</h3>
+            <p class="village-region">Βόρεια Γορτυνία · Ορεινό θέρετρο</p>
+            <p class="village-desc">Γνωστή για τα πυκνά ελατόδαση και το δροσερό κλίμα. Το υδρόμυλο και τα αρχοντικά της σώζονται ακόμα.</p>
+            <div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~95 οικογένειες</span></div>
+          </article>
+          <article class="village-card">
+            <h3 class="village-name">Ηραία</h3>
+            <p class="village-region">Βόρεια Γορτυνία · Αρχαία πόλη</p>
+            <p class="village-desc">Κτισμένη πάνω στα ερείπια της αρχαίας Ηραίας, με θέα στον Αλφειό. Συνδεδεμένη με αρχαίες τελετές προς τιμήν της Ήρας.</p>
+            <div class="village-families"><span class="village-families-label">Pouqueville:</span><span class="village-families-count">~80 οικογένειες</span></div>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- ===== ΤΟΠΩΝΥΜΙΑ ===== -->
     <section id="toponymia" style="background:var(--color-surface);border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
       <div class="container">
         <p class="section-label">Τοπωνύμια</p>
         <h2 class="section-title">Τα ονόματα της γης</h2>
         <p class="section-lead">Σλαβικές, αρχαιοελληνικές, βυζαντινές και τουρκικές λέξεις διαστρωματωμένες σε αιώνες κατοίκησης.</p>
+
+        <div class="callout">
+          <span class="callout-icon">🗺️</span>
+          <div>
+            <p class="callout-label">Γνωρίζατε ότι…</p>
+            <p>Πάνω από 60 οικισμοί της Γορτυνίας μετονομάστηκαν επίσημα μετά το 1920, αντικαθιστώντας σλαβικά και τουρκικά τοπωνύμια με ελληνικά ή αρχαιοελληνικά ονόματα.</p>
+          </div>
+        </div>
+
         <div class="toponyms-grid">
-          <div class="toponym-item"><div class="toponym-dot"></div><div><p class="toponym-origin">Αρχαιοελληνικό</p><p class="toponym-name">Γόρτυς / Γορτυνία</p><p class="toponym-desc">Από τον ήρωα Γόρτυ, γιο του Ραδάμανθη. Η αρχαία πόλη Γόρτυς στα βόρεια της περιοχής.</p></div></div>
-          <div class="toponym-item"><div class="toponym-dot"></div><div><p class="toponym-origin">Σλαβικό</p><p class="toponym-name">Τσιπιανά</p><p class="toponym-desc">Από το σλαβικό *čibъ — παραπέμπει σε εποχή σλαβικής εγκατάστασης (7ος-9ος αι.).</p></div></div>
-          <div class="toponym-item"><div class="toponym-dot"></div><div><p class="toponym-origin">Αρχαιοελληνικό</p><p class="toponym-name">Ηραία / Θέλπουσα</p><p class="toponym-desc">Αρχαίες αρκαδικές πόλεις. Η Θέλπουσα στις όχθες του Λάδωνα ήταν γνωστή από τον Παυσανία.</p></div></div>
-          <div class="toponym-item"><div class="toponym-dot"></div><div><p class="toponym-origin">Βυζαντινό / Φραγκικό</p><p class="toponym-name">Λιοντάρι (Καρύταινα)</p><p class="toponym-desc">Ονομάστηκε «Λιοντάρι» (Lion) από τους Φράγκους λόγω του θυρεού της βαρωνίας De Bruyère.</p></div></div>
-          <div class="toponym-item"><div class="toponym-dot"></div><div><p class="toponym-origin">Αρχαιοελληνικό</p><p class="toponym-name">Αλφειός / Λούσιος</p><p class="toponym-desc">Οι δύο κύριοι ποταμοί. Ο Λούσιος συνδέεται με το μυθικό λούσιμο του Δία κατά τη γέννησή του.</p></div></div>
-          <div class="toponym-item"><div class="toponym-dot"></div><div><p class="toponym-origin">Μετονομασία 1920</p><p class="toponym-name">Στεμνίτσα (πρ. Σπαρτιά)</p><p class="toponym-desc">Πολλά τοπωνύμια μετονομάστηκαν το 1920 για να αποκτήσουν ελληνικό χαρακτήρα.</p></div></div>
+          <div class="toponym-item">
+            <div class="toponym-dot"></div>
+            <div><p class="toponym-origin">Αρχαιοελληνικό</p><p class="toponym-name">Γόρτυς / Γορτυνία</p><p class="toponym-desc">Από τον ήρωα Γόρτυ, γιο του Ραδάμανθη. Η αρχαία πόλη Γόρτυς στα βόρεια της περιοχής.</p></div>
+          </div>
+          <div class="toponym-item">
+            <div class="toponym-dot"></div>
+            <div><p class="toponym-origin">Σλαβικό</p><p class="toponym-name">Τσιπιανά</p><p class="toponym-desc">Από το σλαβικό *čibъ — παραπέμπει σε εποχή σλαβικής εγκατάστασης (7ος-9ος αι.).</p></div>
+          </div>
+          <div class="toponym-item">
+            <div class="toponym-dot"></div>
+            <div><p class="toponym-origin">Αρχαιοελληνικό</p><p class="toponym-name">Ηραία / Θέλπουσα</p><p class="toponym-desc">Αρχαίες αρκαδικές πόλεις. Η Θέλπουσα στις όχθες του Λάδωνα ήταν γνωστή από τον Παυσανία.</p></div>
+          </div>
+          <div class="toponym-item">
+            <div class="toponym-dot"></div>
+            <div><p class="toponym-origin">Βυζαντινό / Φραγκικό</p><p class="toponym-name">Λιοντάρι (Καρύταινα)</p><p class="toponym-desc">Ονομάστηκε «Λιοντάρι» (Lion) από τους Φράγκους λόγω του θυρεού της βαρωνίας De Bruyère.</p></div>
+          </div>
+          <div class="toponym-item">
+            <div class="toponym-dot"></div>
+            <div><p class="toponym-origin">Αρχαιοελληνικό</p><p class="toponym-name">Αλφειός / Λούσιος</p><p class="toponym-desc">Οι δύο κύριοι ποταμοί. Ο Λούσιος συνδέεται με το μυθικό λούσιμο του Δία κατά τη γέννησή του.</p></div>
+          </div>
+          <div class="toponym-item">
+            <div class="toponym-dot"></div>
+            <div><p class="toponym-origin">Μετονομασία 1920</p><p class="toponym-name">Στεμνίτσα (πρ. Σπαρτιά)</p><p class="toponym-desc">Πολλά τοπωνύμια μετονομάστηκαν το 1920 για να αποκτήσουν ελληνικό χαρακτήρα.</p></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ===== ΔΙΑΛΕΚΤΟΣ ===== -->
     <section id="dialektos">
       <div class="container">
         <p class="section-label">Γλωσσολογία</p>
@@ -516,6 +697,81 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== ΣΗΜΕΡΑ ===== -->
+    <section id="simera" class="today-section">
+      <div class="container container--wide">
+        <p class="section-label">Σύγχρονη εποχή</p>
+        <h2 class="section-title">Γορτυνία Σήμερα</h2>
+        <p class="section-lead">Η Γορτυνία σήμερα αποτελεί τμήμα του Δήμου Γορτυνίας, με έδρα τη Δημητσάνα. Παρά τη δημογραφική συρρίκνωση, διατηρεί ζωντανή την πολιτιστική της κληρονομιά.</p>
+        <div class="today-grid">
+          <div class="today-card">
+            <span class="today-card-value">~9.000</span>
+            <span class="today-card-label">Μόνιμοι κάτοικοι</span>
+            <span class="today-card-note">Απογραφή 2021, ΕΛΣΤΑΤ</span>
+          </div>
+          <div class="today-card">
+            <span class="today-card-value">125+</span>
+            <span class="today-card-label">Οικισμοί</span>
+            <span class="today-card-note">Σε έκταση ~1.000 τ.χλμ.</span>
+          </div>
+          <div class="today-card">
+            <span class="today-card-value">~900μ.</span>
+            <span class="today-card-label">Μέσο υψόμετρο</span>
+            <span class="today-card-note">Ορεινή περιοχή Πελοποννήσου</span>
+          </div>
+          <div class="today-card">
+            <span class="today-card-value">2</span>
+            <span class="today-card-label">Μουσεία</span>
+            <span class="today-card-note">Υδροκίνηση Δημητσάνας · Χαλκουργία Στεμνίτσας</span>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:var(--space-10);">
+          <span class="callout-icon">🏛️</span>
+          <div>
+            <p class="callout-label">Μουσείο Υδροκίνησης</p>
+            <p>Στη Δημητσάνα λειτουργεί το μοναδικό <strong>Υπαίθριο Μουσείο Υδροκίνησης</strong>, αφιερωμένο στα νερόμυλα, τα βυρσοδεψεία και τα μπαρουτόμυλα που τροφοδοτούσαν την Επανάσταση του 1821. Ένα από τα σημαντικότερα λαογραφικά μουσεία της Ελλάδας.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ΒΙΒΛΙΟΓΡΑΦΙΑ ===== -->
+    <section id="vivliografia" class="biblio-section">
+      <div class="container">
+        <p class="section-label">Τεκμηρίωση</p>
+        <h2 class="section-title">Βιβλιογραφία &amp; Πηγές</h2>
+        <p class="section-lead">Οι ακόλουθες πηγές αποτέλεσαν τη βάση της έρευνας και της τεκμηρίωσης αυτής της σελίδας.</p>
+        <ol class="biblio-list">
+          <li class="biblio-item">
+            <span class="biblio-num">1.</span>
+            <div class="biblio-text"><strong>Pouqueville, F.C.H.L.</strong> (1820-1821). <em>Voyage de la Grèce</em>, 5 τόμοι. Paris: Firmin Didot.</div>
+          </li>
+          <li class="biblio-item">
+            <span class="biblio-num">2.</span>
+            <div class="biblio-text"><strong>Παπαδόπουλος, Θ.</strong> (1953). <em>Ιστορία της Επαρχίας Γορτυνίας</em>. Αθήνα.</div>
+          </li>
+          <li class="biblio-item">
+            <span class="biblio-num">3.</span>
+            <div class="biblio-text"><strong>Ανδριώτης, Ν.Π.</strong> (1974). <em>Ιστορία της Ελληνικής Γλώσσας</em>. Ίδρυμα Μανόλη Τριανταφυλλίδη.</div>
+          </li>
+          <li class="biblio-item">
+            <span class="biblio-num">4.</span>
+            <div class="biblio-text"><strong>Σακελλαρίου, Μ.</strong> (1971). <em>Αρκαδία</em>, στο: Παπαχατζής, Ν., <em>Παυσανίου Ελλάδος Περιήγησις</em>. Αθήνα: Εκδοτική Αθηνών.</div>
+          </li>
+          <li class="biblio-item">
+            <span class="biblio-num">5.</span>
+            <div class="biblio-text"><strong>ΕΛΣΤΑΤ</strong> (2022). <em>Αποτελέσματα Απογραφής Πληθυσμού-Κατοικιών 2021</em>. Ελληνική Στατιστική Αρχή.</div>
+          </li>
+          <li class="biblio-item">
+            <span class="biblio-num">6.</span>
+            <div class="biblio-text"><strong>Μιχαλακόπουλος, Μ.Σ.</strong> (2024-2026). <em>Γορτυνιακά — Ιστορία, Αφηγήσεις, Παράδοση</em>. <a href="https://saouarcadian.blogspot.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">saouarcadian.blogspot.com</a></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -530,6 +786,7 @@
           <span class="logo-text">Γορτυνία</span>
         </a>
         <p>Ψηφιακή προσπάθεια διατήρησης της ιστορίας, των παραδόσεων και της μνήμης της Γορτυνίας. Βασισμένο σε ιστορικές πηγές, απογραφές και λαϊκές αφηγήσεις.</p>
+        <p class="footer-updated">Τελευταία ενημέρωση: <time id="last-updated"></time></p>
       </div>
       <div class="footer-col">
         <h4>Θεματικές</h4>
@@ -539,6 +796,8 @@
           <li><a href="#choria">Χωριά</a></li>
           <li><a href="#toponymia">Τοπωνύμια</a></li>
           <li><a href="#dialektos">Διάλεκτος</a></li>
+          <li><a href="#simera">Σήμερα</a></li>
+          <li><a href="#vivliografia">Πηγές</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -550,47 +809,91 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025&ndash;2026 Γορτυνία — Ιστορία &amp; Πολιτισμός &middot; Μιχαήλ Σ. Μιχαλακόπουλος &middot; Βασισμένο στο <em>Voyage de la Grèce</em> του Pouqueville.</p>
+      <p>&copy; 2025&ndash;2026 Γορτυνία — Ιστορία &amp; Πολιτισμός &middot; Μιχαήλ Σ. Μιχαλακόπουλος</p>
       <p><a href="https://github.com/Michelis2023/gortynias-historia" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     </div>
   </footer>
 
   <script>
-    (function(){
-      const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
-      let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
-      r.setAttribute('data-theme',d);
-      if(t){
-        t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-        t.addEventListener('click',function(){d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';});
+    // THEME TOGGLE
+    (function () {
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sunIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+      const moonIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      if (toggle) {
+        toggle.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
+        toggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', theme);
+          toggle.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
+        });
       }
     })();
 
-    // Hamburger menu
-    (function(){
-      const btn=document.querySelector('[data-hamburger]');
-      const nav=document.getElementById('mobile-nav');
-      if(!btn||!nav)return;
-      btn.addEventListener('click',function(){
-        const open=nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded',open);
-        btn.innerHTML=open
-          ?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
-          :'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+    // HAMBURGER MENU
+    (function () {
+      const btn = document.querySelector('[data-hamburger]');
+      const nav = document.getElementById('mobile-nav');
+      if (!btn || !nav) return;
+      const openIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+      const closeIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      btn.addEventListener('click', function () {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+        btn.innerHTML = open ? closeIcon : openIcon;
       });
-      document.querySelectorAll('.mobile-nav-link').forEach(function(a){
-        a.addEventListener('click',function(){
+      document.querySelectorAll('.mobile-nav-link').forEach(function (a) {
+        a.addEventListener('click', function () {
           nav.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-          btn.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+          btn.setAttribute('aria-expanded', 'false');
+          btn.innerHTML = openIcon;
         });
       });
     })();
 
-    (function(){
-      if(!window.IntersectionObserver)return;
-      const obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-      document.querySelectorAll('.village-card,.timeline-item,.toponym-item,.dialect-card').forEach(function(el,i){el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s cubic-bezier(0.16,1,0.3,1) '+(i*0.06)+'s, transform 0.5s cubic-bezier(0.16,1,0.3,1) '+(i*0.06)+'s';obs.observe(el);});
+    // SCROLL: PROGRESS BAR + BACK TO TOP + ACTIVE NAV
+    (function () {
+      const bar = document.getElementById('reading-progress');
+      const btn = document.getElementById('back-to-top');
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+      window.addEventListener('scroll', function () {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (bar) bar.style.width = (docH > 0 ? (scrollTop / docH * 100) : 0) + '%';
+        if (btn) {
+          if (scrollTop > 400) btn.classList.add('visible');
+          else btn.classList.remove('visible');
+        }
+        let current = '';
+        sections.forEach(function (s) {
+          if (scrollTop >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach(function (a) {
+          a.classList.remove('active');
+          if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        });
+      }, { passive: true });
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+
+    // LAST UPDATED DATE
+    (function () {
+      const el = document.getElementById('last-updated');
+      if (el) {
+        const d = new Date(document.lastModified);
+        el.setAttribute('datetime', d.toISOString().split('T')[0]);
+        el.textContent = d.toLocaleDateString('el-GR', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
     })();
   </script>
 </body>

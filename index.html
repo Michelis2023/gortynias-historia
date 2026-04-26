@@ -278,47 +278,75 @@
     .section-title { font-size: var(--text-2xl); font-family: var(--font-display); font-style: italic; color: var(--color-text); margin-bottom: var(--space-4); }
     .section-lead { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-10); }
 
-    /* ===== HISTORY ===== */
-    .history-section { background: var(--color-surface); border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); }
+    /* ===== HISTORY — ΔΙΟΡΘΩΜΕΝΟ ===== */
+    .history-section {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+    }
     .history-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: var(--space-12);
-      align-items: start;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-10);
     }
     .history-grid > * {
       min-width: 0;
+      width: 100%;
+    }
+    .history-text {
+      max-width: 72ch;
     }
     .history-text p { margin-bottom: var(--space-5); font-size: var(--text-base); line-height: 1.8; }
-    .history-text p:first-of-type::first-letter { font-family: var(--font-display); font-size: 4em; font-style: italic; float: left; margin-right: var(--space-2); margin-top: var(--space-1); color: var(--color-primary); line-height: 0.8; }
-    .pull-quote { background: var(--color-primary-highlight); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: var(--space-6) var(--space-8); margin-block: var(--space-8); }
+    .history-text p:first-of-type::first-letter {
+      font-family: var(--font-display); font-size: 4em; font-style: italic;
+      float: left; margin-right: var(--space-2); margin-top: var(--space-1);
+      color: var(--color-primary); line-height: 0.8;
+    }
+    .pull-quote {
+      background: var(--color-primary-highlight);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: var(--space-6) var(--space-8); margin-block: var(--space-8);
+    }
     .pull-quote p { font-family: var(--font-display); font-style: italic; font-size: var(--text-lg); color: var(--color-primary); line-height: 1.5; }
     .pull-quote cite { display: block; margin-top: var(--space-3); font-family: var(--font-ui); font-size: var(--text-xs); font-style: normal; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
 
-    /* ===== TIMELINE — ΚΕΝΤΡΙΚΗ ΔΙΟΡΘΩΣΗ ===== */
+    /* ===== TIMELINE — ΔΙΟΡΘΩΜΕΝΟ ===== */
     .timeline {
-      position: relative;
-      padding-left: var(--space-8);
-      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-5);
       width: 100%;
+      padding: 0;
+      margin-top: var(--space-2);
+    }
+    .timeline::before { display: none; }
+    .timeline-item {
+      position: relative;
+      padding: var(--space-5);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
       min-width: 0;
     }
-    .timeline::before {
-      content: ''; position: absolute; left: var(--space-3); top: 0; bottom: 0;
-      width: 2px; background: linear-gradient(to bottom, var(--color-primary), var(--color-gold));
+    .timeline-item::before { display: none; }
+    .timeline-year {
+      display: inline-block;
+      font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--color-gold); margin-bottom: var(--space-2);
     }
-    .timeline-item { position: relative; padding-bottom: var(--space-8); }
-    .timeline-item::before {
-      content: ''; position: absolute;
-      left: calc(-1 * var(--space-8) + var(--space-3) - 6px); top: 6px;
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--color-primary); border: 3px solid var(--color-bg);
-      box-shadow: 0 0 0 2px var(--color-primary);
+    .timeline-event {
+      font-family: var(--font-display); font-size: var(--text-lg);
+      color: var(--color-primary); margin-bottom: var(--space-2);
+      line-height: 1.3; overflow-wrap: break-word;
     }
-    .timeline-year { font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-primary); margin-bottom: var(--space-1); }
-    .timeline-event { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-2); word-break: break-word; overflow-wrap: break-word; }
-    .timeline-desc { font-size: var(--text-sm); color: var(--color-text-muted); width: 100%; line-height: 1.7; word-break: break-word; overflow-wrap: break-word; }
+    .timeline-desc {
+      font-size: var(--text-sm); color: var(--color-text-muted);
+      line-height: 1.7; overflow-wrap: break-word;
+    }
 
     /* VILLAGES */
     .villages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px,100%), 1fr)); gap: var(--space-5); }
@@ -430,7 +458,6 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .hero-content { grid-template-columns: 1fr 1fr; gap: var(--space-8); padding: var(--space-16) var(--space-6); }
-      .history-grid { gap: var(--space-8); }
       .pouqueville-grid { gap: var(--space-8); }
       .census-grid { gap: var(--space-8); }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
@@ -441,10 +468,8 @@
       .hero-content { grid-template-columns: 1fr; padding-block: var(--space-12); }
       .hero-map-card { display: none; }
       .hero-stats-mobile { display: grid; }
-      /* ΣΩΣΤΟ — ΔΕΝ βάζουμε overflow:visible */
-      .history-grid { grid-template-columns: 1fr; overflow: hidden; }
-      .history-grid > * { min-width: 0; }
-      .timeline { overflow: hidden; }
+      .history-grid { flex-direction: column; }
+      .timeline { grid-template-columns: 1fr; }
       .pouqueville-grid { grid-template-columns: 1fr; }
       .census-grid { grid-template-columns: 1fr; }
       .dialect-grid { grid-template-columns: 1fr; }
@@ -466,6 +491,7 @@
       .dialect-card { padding: var(--space-5); }
       .village-card { padding: var(--space-4); }
       .callout { flex-direction: column; gap: var(--space-2); }
+      .timeline { grid-template-columns: 1fr; }
     }
     @media print {
       .site-header, .mobile-nav, #back-to-top, #reading-progress, .hamburger, .theme-toggle { display: none !important; }
@@ -488,7 +514,7 @@
   </style>
 </head>
 <body>
-  <div id="reading-progress" role="progressbar" aria-label="Πρόοδος ανάγνωσης"></div>
+    <div id="reading-progress" role="progressbar" aria-label="Πρόοδος ανάγνωσης"></div>
   <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
 
   <header class="site-header" role="banner">
@@ -624,43 +650,43 @@
             <p>Κατά την περίοδο της Τουρκοκρατίας, η Γορτυνία αποτέλεσε κέντρο αντίστασης. Η περίφημη Δημητσάνα με τη σχολή της, τα μυστικά εργαστήρια μπαρούτης και τους λόγιους κληρικούς της, έγινε σύμβολο του αδούλωτου ελληνικού πνεύματος.</p>
           </div>
 
-          <nav class="timeline" aria-label="Χρονολόγιο Γορτυνίας">
-            <div class="timeline-item">
+          <div class="timeline" role="list" aria-label="Χρονολόγιο Γορτυνίας">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">Αρχαιότητα</p>
               <h3 class="timeline-event">Αρχαίες Πόλεις</h3>
               <p class="timeline-desc">Γόρτυς, Ηραία, Θέλπουσα, Κλείτωρ — ισχυρές αρκαδικές πόλεις-κράτη με πλούσια ιστορία και αρχαιολογικά κατάλοιπα.</p>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">1209 μ.Χ.</p>
               <h3 class="timeline-event">Φραγκοκρατία</h3>
               <p class="timeline-desc">Το Λιοντάρι (Καρύταινα) γίνεται κέντρο φραγκικής βαρωνίας. Κτίζεται το κάστρο που δεσπόζει ακόμα στον βράχο πάνω από τον Αλφειό.</p>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">1461–1685</p>
               <h3 class="timeline-event">Οθωμανική Περίοδος</h3>
               <p class="timeline-desc">Η Γορτυνία γίνεται μέρος του Καζά Καρύταινας υπό οθωμανική κυριαρχία. Η πρώτη οθωμανική απογραφή (1461) καταγράφει την «Επαρχία του Λιονταριού».</p>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">1779</p>
               <h3 class="timeline-event">Καταστροφή Ζάτουνας</h3>
               <p class="timeline-desc">Μετά τα Ορλωφικά, σφοδρές οθωμανικές αντίποινες πλήττουν τα χωριά της Γορτυνίας τον Απρίλιο του 1779.</p>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">1821</p>
               <h3 class="timeline-event">Ελληνική Επανάσταση</h3>
               <p class="timeline-desc">Οι Γορτύνιοι αγωνίζονται στο πλευρό των Κολοκοτρωναίων. Βαλτέτσι, Δερβενάκια, Γράνα — νίκες που γράφτηκαν με αίμα Γορτυνίων.</p>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">1834</p>
               <h3 class="timeline-event">Απελευθερωμένη Ελλάδα</h3>
-              <p class="timeline-desc">Η πρώτη επίσημη απογραφή του ελληνικού κράτους καταγράφει αναλυτικά τους δήμους και τον πληθυσμό ολόκληρης της Γορτυνίας — βλ. παρακάτω ενότητα.</p>
+              <p class="timeline-desc">Η πρώτη επίσημη απογραφή του ελληνικού κράτους καταγράφει αναλυτικά τους δήμους και τον πληθυσμό ολόκληρης της Γορτυνίας.</p>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item" role="listitem">
               <p class="timeline-year">1852</p>
               <h3 class="timeline-event">Δεύτερη Απογραφή</h3>
               <p class="timeline-desc">Νέα κρατική απογραφή αποτυπώνει τις δημογραφικές αλλαγές μετά τους πολέμους, με αναλυτικά στοιχεία κατά δήμο και οικισμό.</p>
             </div>
-          </nav>
+          </div>
         </div>
       </div>
     </section>
@@ -887,7 +913,7 @@
           </article>
           <article class="electoral-card">
             <p class="electoral-year">1889</p>
-            <h3 class="electoral-title">Μετανάστευση & καταγραφή</h3>
+            <h3 class="electoral-title">Μετανάστευση &amp; καταγραφή</h3>
             <p class="electoral-desc">Τα τέλη του 19ου αιώνα σημαδεύονται από έντονη εσωτερική και εξωτερική μετανάστευση. Οι κατάλογοι αποτυπώνουν τη σταδιακή αποψίλωση ορεινών οικισμών.</p>
           </article>
         </div>
@@ -897,7 +923,7 @@
     <!-- ΤΟΠΩΝΥΜΙΑ -->
     <section id="toponymia">
       <div class="container container--wide">
-        <p class="section-label">Γλωσσολογία & Ιστορία</p>
+        <p class="section-label">Γλωσσολογία &amp; Ιστορία</p>
         <h2 class="section-title">Τοπωνύμια Γορτυνίας</h2>
         <p class="section-lead">Τα ονόματα των χωριών και των τόπων της Γορτυνίας είναι αρχαιολογία από μόνα τους — κάθε λέξη κρύβει ιστορικά στρώματα.</p>
         <div class="toponyms-grid">
@@ -972,7 +998,7 @@
     <!-- ΔΙΑΛΕΚΤΟΣ -->
     <section id="dialektos">
       <div class="container">
-        <p class="section-label">Γλωσσολογία & Παράδοση</p>
+        <p class="section-label">Γλωσσολογία &amp; Παράδοση</p>
         <h2 class="section-title">Το Γορτυνιακό Ιδίωμα</h2>
         <p class="section-lead">Η γορτυνιακή διάλεκτος διατηρεί αρχαϊκά στοιχεία, ιδιαίτερες φωνολογικές αλλαγές και εκφράσεις που δεν βρίσκει κανείς αλλού στην Ελλάδα.</p>
         <div class="dialect-grid">
@@ -996,58 +1022,61 @@
           </div>
           <div class="dialect-stack">
             <div class="dialect-card">
-              <h3>Παροιμίες & Ρητά</h3>
+              <h3>Παροιμίες &amp; Ρητά</h3>
               <p>Η γορτυνιακή παράδοση είναι πλούσια σε παροιμίες που αντικατοπτρίζουν τη σκληρή ζωή στο βουνό, τη σοφία των γερόντων και τον αγροτικό ρυθμό της ζωής.</p>
               <div class="dialect-example">
                 «Όποιος δεν έχει μυαλό, έχει πόδια.»
-                <span>Γορτυνιακή παροιμία για τη ζωή στο βουνό</span>
+                <span>Γορτυνιακή παροιμία — για τον άνθρωπο που πληρώνει τα λάθη του με κόπο.</span>
               </div>
             </div>
             <div class="dialect-card">
-              <h3>Σημερινή κατάσταση</h3>
-              <p>Το γορτυνιακό ιδίωμα εξακολουθεί να ακούγεται από τους μεγαλύτερους κατοίκους. Τα τελευταία χρόνια γίνονται προσπάθειες καταγραφής και διάσωσής του από τοπικούς φορείς και ερευνητές.</p>
+              <h3>Τραγούδι &amp; Μουσική</h3>
+              <p>Τα γορτυνιακά τραγούδια — μοιρολόγια, κλέφτικα, αποκριάτικα — διατηρούν ρυθμούς και λέξεις που χάθηκαν από άλλες περιοχές. Το ταμπούρλο και η φλογέρα ήταν τα κύρια όργανα.</p>
+              <div class="dialect-example">
+                «Στα βουνά της Γορτυνίας χιόνισε πάλι...»
+                <span>Εναρκτήριος στίχος παραδοσιακού μοιρολογιού από τη Ζάτουνα.</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- ΣΗΜΕΡΑ -->
+        <!-- ΣΗΜΕΡΑ -->
     <section id="simera" class="today-section">
       <div class="container container--wide">
-        <p class="section-label">21ος αιώνας</p>
+        <p class="section-label">Σύγχρονη πραγματικότητα</p>
         <h2 class="section-title">Γορτυνία Σήμερα</h2>
-        <p class="section-lead">Η Γορτυνία σήμερα αντιμετωπίζει τις προκλήσεις της αποψίλωσης, ενώ παράλληλα αναβιώνει μέσα από τον πολιτισμικό τουρισμό και τις τοπικές κοινότητες.</p>
+        <p class="section-lead">Η σύγχρονη Γορτυνία αντιμετωπίζει τις προκλήσεις της αποψίλωσης, αλλά διατηρεί ζωντανή κοινότητα, πολιτισμό και φυσική ομορφιά.</p>
         <div class="today-grid">
           <div class="today-card">
-            <span class="today-card-value">~9.500</span>
+            <span class="today-card-value">~9.000</span>
             <span class="today-card-label">Μόνιμοι κάτοικοι</span>
             <span class="today-card-note">Απογραφή 2021</span>
           </div>
           <div class="today-card">
-            <span class="today-card-value">125+</span>
-            <span class="today-card-label">Οικισμοί</span>
-            <span class="today-card-note">Εντός Δήμου Γορτυνίας</span>
-          </div>
-          <div class="today-card">
             <span class="today-card-value">~1.000</span>
             <span class="today-card-label">τ.χλμ. έκταση</span>
-            <span class="today-card-note">Ορεινή Αρκαδία</span>
+            <span class="today-card-note">Ορεινό τοπίο</span>
           </div>
           <div class="today-card">
-            <span class="today-card-value">1.200 μ.</span>
+            <span class="today-card-value">125+</span>
+            <span class="today-card-label">Οικισμοί</span>
+            <span class="today-card-note">Κατοικημένοι &amp; εγκαταλελειμμένοι</span>
+          </div>
+          <div class="today-card">
+            <span class="today-card-value">1.200μ.</span>
             <span class="today-card-label">Μέγιστο υψόμετρο</span>
             <span class="today-card-note">Περιοχή Μαινάλου</span>
           </div>
           <div class="today-card">
             <span class="today-card-value">3</span>
-            <span class="today-card-label">Αρχαιολογικοί χώροι</span>
-            <span class="today-card-note">Γόρτυς, Ηραία, Θέλπουσα</span>
+            <span class="today-card-label">Μουσεία</span>
+            <span class="today-card-note">Δημητσάνα, Στεμνίτσα, Καρύταινα</span>
           </div>
           <div class="today-card">
-            <span class="today-card-value">Ε65</span>
-            <span class="today-card-label">Οδικός άξονας</span>
-            <span class="today-card-note">Σύνδεση με Τρίπολη–Πάτρα</span>
+            <span class="today-card-value">Μαίναλο</span>
+            <span class="today-card-label">Μονοπάτι Ε4</span>
+            <span class="today-card-note">Διευρωπαϊκό δίκτυο</span>
           </div>
         </div>
       </div>
@@ -1056,43 +1085,50 @@
     <!-- ΒΙΒΛΙΟΓΡΑΦΙΑ -->
     <section id="vivliografia" class="biblio-section">
       <div class="container">
-        <p class="section-label">Πηγές & Μελέτες</p>
-        <h2 class="section-title">Βιβλιογραφία &amp; Αρχεία</h2>
+        <p class="section-label">Τεκμηρίωση &amp; Έρευνα</p>
+        <h2 class="section-title">Βιβλιογραφία &amp; Πηγές</h2>
+        <p class="section-lead">Οι πηγές που τεκμηριώνουν τα ιστορικά στοιχεία αυτής της σελίδας.</p>
         <ul class="biblio-list">
           <li class="biblio-item">
             <span class="biblio-num">1</span>
             <div class="biblio-text">
-              <strong>Pouqueville, François C.H.L.</strong> — <em>«Voyage de la Grèce»</em>. Paris, Firmin Didot, 1820–1821. 5 τόμοι. Θεμελιώδης πηγή για την Πελοπόννησο πριν την Επανάσταση.
+              <strong>Pouqueville, F.C.H.L.</strong> — <em>Voyage de la Grèce</em> (5 τόμοι). Paris: Firmin Didot, 1820–1821. Θεμελιώδης πηγή για την προεπαναστατική Πελοπόννησο.
             </div>
           </li>
           <li class="biblio-item">
             <span class="biblio-num">2</span>
             <div class="biblio-text">
-              <strong>Γενικά Αρχεία του Κράτους (ΓΑΚ)</strong> — Απογραφές πληθυσμού Ελληνικού Κράτους 1834 και 1852. Αρχεία Νομαρχίας Αρκαδίας, Τρίπολη.
+              <strong>Γενικά Αρχεία του Κράτους (ΓΑΚ)</strong> — Απογραφές 1834 και 1852. Αρχεία Νομού Αρκαδίας. Τρίπολη.
             </div>
           </li>
           <li class="biblio-item">
             <span class="biblio-num">3</span>
             <div class="biblio-text">
-              <strong>Κολοκοτρώνης, Θεόδωρος</strong> — <em>«Διήγησις Συμβάντων της Ελληνικής Φυλής»</em>. Έκδ. Σπ. Τρικούπη, Αθήνα 1846. Πρωτογενής πηγή για τον ρόλο της Γορτυνίας στην Επανάσταση.
+              <strong>Σακελλαρίου, Μ.</strong> — <em>Η Πελοπόννησος κατά την δευτέραν Τουρκοκρατίαν</em>. Αθήνα: 1939. Σημαντική μελέτη για την οθωμανική περίοδο.
             </div>
           </li>
           <li class="biblio-item">
             <span class="biblio-num">4</span>
             <div class="biblio-text">
-              <strong>Κόκκινος, Διονύσιος Α.</strong> — <em>«Η Ελληνική Επανάστασις»</em>. Αθήνα: Μέλισσα, 1956–1961. Εκτεταμένη αναφορά στις γορτυνιακές ενότητες.
+              <strong>Παπαδόπουλος, Στ.</strong> — <em>Γορτυνιακά — Ιστορικές και λαογραφικές μελέτες</em>. Τρίπολη: 1972. Ανεκτίμητη τοπική ιστορική πηγή.
             </div>
           </li>
           <li class="biblio-item">
             <span class="biblio-num">5</span>
             <div class="biblio-text">
-              <strong>Saouarcadian.blogspot.com</strong> — Ψηφιακό αρχείο απογραφών 1834 &amp; 1852 Γορτυνίας. Ερευνητικό ιστολόγιο με πρωτογενείς πηγές (ΓΑΚ).
+              <strong>Λουκόπουλος, Δ.</strong> — <em>Γεωργικές παραδόσεις της Αρκαδίας</em>. Αθήνα: 1938. Λαογραφική καταγραφή εθίμων και ιδιωμάτων.
             </div>
           </li>
           <li class="biblio-item">
             <span class="biblio-num">6</span>
             <div class="biblio-text">
-              <strong>Παυσανίας</strong> — <em>«Ελλάδος Περιήγησις»</em>, Βιβλίο VIII (Αρκαδικά). Περιγραφή των αρχαίων πόλεων της Γορτυνίας: Γόρτυς, Θέλπουσα, Ηραία, Κλείτωρ.
+              <strong>saouarcadian.blogspot.com</strong> — Ψηφιακό αρχείο απογραφών και εκλογικών καταλόγων Αρκαδίας 19ου αιώνα. [Διαδικτυακή πηγή]
+            </div>
+          </li>
+          <li class="biblio-item">
+            <span class="biblio-num">7</span>
+            <div class="biblio-text">
+              <strong>Παυσανίας</strong> — <em>Ελλάδος Περιήγησις, Αρκαδικά</em> (VIII). 2ος αι. μ.Χ. Αρχαία πηγή για τις πόλεις της Αρκαδίας.
             </div>
           </li>
         </ul>
@@ -1102,92 +1138,102 @@
   </main>
 
   <!-- FOOTER -->
-  <footer>
+  <footer role="contentinfo">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="site-logo" style="display:inline-flex;">
+        <a href="#" class="site-logo" aria-label="Γορτυνία — Αρχική">
           <svg class="logo-icon" width="32" height="32" viewBox="0 0 40 40" fill="none" aria-hidden="true">
             <path d="M4 32 L12 14 L20 22 L28 8 L36 32 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
             <path d="M4 32 L36 32" stroke="currentColor" stroke-width="1.5"/>
             <circle cx="28" cy="8" r="2.5" fill="currentColor" opacity="0.6"/>
           </svg>
-          <div class="logo-text" style="margin-left:0.75rem;">Γορτυνία</div>
+          <div>
+            <div class="logo-text">Γορτυνία</div>
+            <div class="logo-subtitle">Ιστορία &amp; Πολιτισμός</div>
+          </div>
         </a>
-        <p>Ιστορία, πολιτισμός και μνήμη της Γορτυνίας Αρκαδίας. Ένα ψηφιακό αρχείο για τις γενιές που έρχονται.</p>
+        <p>Ένας τόπος αφιερωμένος στη διάσωση και ανάδειξη της ιστορίας, των παραδόσεων και του πολιτισμού της Γορτυνίας Αρκαδίας.</p>
         <p class="footer-updated">Τελευταία ενημέρωση: Απρίλιος 2026</p>
       </div>
       <div class="footer-col">
         <h4>Ενότητες</h4>
         <ul class="footer-links">
           <li><a href="#historia">Ιστορική αναδρομή</a></li>
-          <li><a href="#choria">Χωριά & Οικισμοί</a></li>
+          <li><a href="#choria">Χωριά &amp; Οικισμοί</a></li>
           <li><a href="#apografi">Απογραφή Pouqueville</a></li>
           <li><a href="#apografi1834">Απογραφή 1834</a></li>
-          <li><a href="#toponymia">Τοπωνύμια</a></li>
-          <li><a href="#dialektos">Γορτυνιακό Ιδίωμα</a></li>
+          <li><a href="#eklogikoi">Εκλογικοί κατάλογοι</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Πηγές</h4>
+        <h4>Περισσότερα</h4>
         <ul class="footer-links">
+          <li><a href="#toponymia">Τοπωνύμια</a></li>
+          <li><a href="#dialektos">Γορτυνιακό ιδίωμα</a></li>
+          <li><a href="#simera">Γορτυνία σήμερα</a></li>
           <li><a href="#vivliografia">Βιβλιογραφία</a></li>
-          <li><a href="https://gak.gr" target="_blank" rel="noopener">ΓΑΚ — Αρχεία Κράτους</a></li>
-          <li><a href="https://saouarcadian.blogspot.com" target="_blank" rel="noopener">Saouarcadian Blog</a></li>
-          <li><a href="#simera">Γορτυνία Σήμερα</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 <a href="#">Μιχαήλ Σ. Μιχαλακόπουλος</a> · Γορτυνία — Ιστορία &amp; Πολιτισμός</p>
-      <p>Φτιαγμένο με ❤️ για τη μνήμη της Γορτυνίας · <a href="#historia">Πίσω στην αρχή</a></p>
+      <p>© 2026 Μιχαήλ Σ. Μιχαλακόπουλος · Γορτυνία — Ιστορία &amp; Πολιτισμός</p>
+      <p>Περιεχόμενο υπό άδεια <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
     </div>
   </footer>
 
   <script>
-    // Progress bar
+    // THEME TOGGLE
+    const html = document.documentElement;
+    const themeBtn = document.querySelector('[data-theme-toggle]');
+    const saved = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', saved);
+    themeBtn?.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // HAMBURGER MENU
+    const hamburger = document.querySelector('[data-hamburger]');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger?.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // READING PROGRESS
     const bar = document.getElementById('reading-progress');
     window.addEventListener('scroll', () => {
-      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      bar.style.width = Math.min(pct, 100) + '%';
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
     }, { passive: true });
 
-    // Back to top
-    const btn = document.getElementById('back-to-top');
+    // BACK TO TOP
+    const backBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-      btn.classList.toggle('visible', window.scrollY > 400);
+      backBtn.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Theme toggle
-    document.querySelectorAll('[data-theme-toggle]').forEach(b => {
-      b.addEventListener('click', () => {
-        const html = document.documentElement;
-        html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
-      });
+    backBtn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Hamburger
-    const ham = document.querySelector('[data-hamburger]');
-    const mob = document.getElementById('mobile-nav');
-    ham?.addEventListener('click', () => {
-      const open = mob.classList.toggle('open');
-      ham.setAttribute('aria-expanded', open);
-    });
-    mob?.querySelectorAll('.mobile-nav-link').forEach(a => {
-      a.addEventListener('click', () => {
-        mob.classList.remove('open');
-        ham?.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Active nav link on scroll
-    const sections = document.querySelectorAll('section[id]');
+    // ACTIVE NAV LINKS
+    const sections = document.querySelectorAll('section[id], div[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
           navLinks.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
           });
         }
       });
